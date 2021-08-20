@@ -13,7 +13,7 @@
         <version>2.5.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.example</groupId>
+    <groupId>com.phunguyen3107</groupId>
     <artifactId>spring-pet-clinic</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-pet-clinic</name>
@@ -32,7 +32,18 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId> org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <goals>install</goals>
+
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+    <scm>
+        <developerConnection>scm:git:git@github.com:phunq3107/spring-pet-clinic.git</developerConnection>
+    </scm>
 
 </project>
