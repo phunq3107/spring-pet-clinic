@@ -1,13 +1,13 @@
 package com.phunguyen3107.springpetclinic.service.map;
 
 import com.phunguyen3107.springpetclinic.model.Owner;
-import com.phunguyen3107.springpetclinic.service.CrudService;
+import com.phunguyen3107.springpetclinic.service.OwnerService;
 
 import java.util.Set;
 
 public class OwnerServiceMap
         extends AbstractMapService<Owner, Long>
-        implements CrudService<Owner, Long> {
+        implements OwnerService {
 
     @Override
     public Set<Owner> findAll() {
