@@ -2,9 +2,11 @@ package com.phunguyen3107.springpetclinic.service.map;
 
 import com.phunguyen3107.springpetclinic.model.Pet;
 import com.phunguyen3107.springpetclinic.service.PetService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class PetServiceMap
         extends AbstractMapService<Pet, Long>
         implements PetService {
