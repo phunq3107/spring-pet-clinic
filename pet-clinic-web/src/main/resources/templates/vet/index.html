@@ -5,19 +5,20 @@
   Time: 10:50 AM
 -->
 <!DOCTYPE html>
-<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'vets')}">
 <head>
     <meta charset="UTF-8">
     <title>List of Vets</title>
 </head>
 <body>
 <h1 th:text="'List of vets'">List of vets</h1>
-<table>
+<table class="table table-striped">
     <thead>
     <tr>
-        <th>Id</th>
-        <th>First name</th>
-        <th>Last name</th>
+        <th style="width: 150px;">Id</th>
+        <th style="width: 150px;">First name</th>
+        <th style="width: 150px;">Last name</th>
     </tr>
     </thead>
     <tbody>
