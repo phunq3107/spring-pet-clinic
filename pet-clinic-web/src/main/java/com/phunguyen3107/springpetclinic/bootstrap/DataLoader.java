@@ -34,16 +34,24 @@ public class DataLoader implements CommandLineRunner {
         dog.setName("Cat");
         petTypeService.save(cat);
 
+        System.out.println("Loaded pet types...");
+
         Owner owner1 = new Owner();
         owner1.setId(1L);
         owner1.setFirstName("Michael");
         owner1.setLastName("Weston");
+        owner1.setAddress("Address-of-owner-" + owner1.getFirstName());
+        owner1.setCity("City-of-owner-" + owner1.getFirstName());
+        owner1.setTelephone("Phone-number-of-owner-" + owner1.getFirstName());
         ownerService.save(owner1);
 
         Owner owner2 = new Owner();
         owner2.setId(2L);
         owner2.setFirstName("John");
         owner2.setLastName("Wilson");
+        owner2.setAddress("Address-of-owner-" + owner2.getFirstName());
+        owner2.setCity("City-of-owner-" + owner2.getFirstName());
+        owner2.setTelephone("Phone-number-of-owner-" + owner2.getFirstName());
         ownerService.save(owner2);
 
         System.out.println("Loaded owners...");
