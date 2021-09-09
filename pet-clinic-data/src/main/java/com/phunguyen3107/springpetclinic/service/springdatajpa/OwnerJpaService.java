@@ -5,10 +5,12 @@ import com.phunguyen3107.springpetclinic.repository.OwnerRepository;
 import com.phunguyen3107.springpetclinic.repository.PetRepository;
 import com.phunguyen3107.springpetclinic.repository.PetTypeRepository;
 import com.phunguyen3107.springpetclinic.service.OwnerService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class OwnerJpaService implements OwnerService {
 
     private final OwnerRepository ownerRepository;
