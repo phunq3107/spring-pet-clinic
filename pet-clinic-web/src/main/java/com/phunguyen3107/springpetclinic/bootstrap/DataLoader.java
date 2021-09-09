@@ -25,19 +25,19 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         PetType dog = new PetType();
-        dog.setId(1L);
+//        dog.setId(1L);
         dog.setName("Dog");
         petTypeService.save(dog);
 
         PetType cat = new PetType();
-        dog.setId(2L);
-        dog.setName("Cat");
+//        dog.setId(2L);
+        cat.setName("Cat");
         petTypeService.save(cat);
 
         System.out.println("Loaded pet types...");
 
         Owner owner1 = new Owner();
-        owner1.setId(1L);
+//        owner1.setId(1L);
         owner1.setFirstName("Michael");
         owner1.setLastName("Weston");
         owner1.setAddress("Address-of-owner-" + owner1.getFirstName());
@@ -46,7 +46,7 @@ public class DataLoader implements CommandLineRunner {
         ownerService.save(owner1);
 
         Owner owner2 = new Owner();
-        owner2.setId(2L);
+//        owner2.setId(2L);
         owner2.setFirstName("John");
         owner2.setLastName("Wilson");
         owner2.setAddress("Address-of-owner-" + owner2.getFirstName());
@@ -57,13 +57,13 @@ public class DataLoader implements CommandLineRunner {
         System.out.println("Loaded owners...");
 
         Vet vet1 = new Vet();
-        vet1.setId(1L);
+//        vet1.setId(1L);
         vet1.setFirstName("Sam");
         vet1.setLastName("Axe");
         vetService.save(vet1);
 
         Vet vet2 = new Vet();
-        vet2.setId(2L);
+//        vet2.setId(2L);
         vet2.setFirstName("Steve");
         vet2.setLastName("Porter");
         vetService.save(vet2);

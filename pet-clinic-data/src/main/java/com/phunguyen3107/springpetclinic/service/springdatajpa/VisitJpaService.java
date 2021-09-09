@@ -3,10 +3,12 @@ package com.phunguyen3107.springpetclinic.service.springdatajpa;
 import com.phunguyen3107.springpetclinic.model.Visit;
 import com.phunguyen3107.springpetclinic.repository.VisitRepository;
 import com.phunguyen3107.springpetclinic.service.VisitService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class VisitJpaService implements VisitService {
     private final VisitRepository visitRepository;
 

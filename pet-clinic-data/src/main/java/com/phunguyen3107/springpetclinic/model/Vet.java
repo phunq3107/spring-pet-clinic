@@ -1,12 +1,20 @@
 package com.phunguyen3107.springpetclinic.model;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "vets")
 public class Vet extends Person {
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "vet_speciality",
@@ -15,11 +23,4 @@ public class Vet extends Person {
     )
     private Set<Speciality> specialities = new HashSet<>();
 
-    public Set<Speciality> getSpecialities() {
-        return specialities;
-    }
-
-    public void setSpecialities(Set<Speciality> specialities) {
-        this.specialities = specialities;
-    }
 }
