@@ -17,7 +17,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -49,7 +51,7 @@ class OwnerControllerTest {
     void listOwners() throws Exception {
         when(ownerService.findAll()).thenReturn(owners);
 
-        mockMvc.perform(get("/owner"))
+        mockMvc.perform(get("/owners"))
                 .andExpect(status().is(200))
                 .andExpect(view().name("owner/index"))
                 .andExpect(model().attribute("listOwners",hasSize(2)));
@@ -59,9 +61,19 @@ class OwnerControllerTest {
     void listOwners_byIndex() throws Exception {
         when(ownerService.findAll()).thenReturn(owners);
 
-        mockMvc.perform(get("/owner/index"))
+        mockMvc.perform(get("/owners/index"))
                 .andExpect(status().is(200))
                 .andExpect(view().name("owner/index"))
                 .andExpect(model().attribute("listOwners",hasSize(2)));
+    }
+
+    @Test
+    void displayOwner() throws Exception{
+        when(ownerService.findById(anyLong())).thenReturn(Owner.builder().id(1L).build());
+
+        mockMvc.perform(get("/owners/1"))
+                .andExpect(status().is(200))
+                .andExpect(view().name("owner/ownerDetails"))
+                .andExpect(model().attribute("owner",notNullValue()));
     }
 }
