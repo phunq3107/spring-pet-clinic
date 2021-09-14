@@ -1,13 +1,15 @@
 package com.phunguyen3107.springpetclinic.bootstrap;
 
-import com.phunguyen3107.springpetclinic.model.Owner;
-import com.phunguyen3107.springpetclinic.model.PetType;
-import com.phunguyen3107.springpetclinic.model.Vet;
+import com.phunguyen3107.springpetclinic.model.*;
 import com.phunguyen3107.springpetclinic.service.OwnerService;
 import com.phunguyen3107.springpetclinic.service.PetTypeService;
 import com.phunguyen3107.springpetclinic.service.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDate;
+import java.util.HashSet;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -23,6 +25,7 @@ public class DataLoader implements CommandLineRunner {
     }
 
     @Override
+    @Transactional
     public void run(String... args) throws Exception {
         PetType dog = new PetType();
 //        dog.setId(1L);
@@ -35,6 +38,7 @@ public class DataLoader implements CommandLineRunner {
         petTypeService.save(cat);
 
         System.out.println("Loaded pet types...");
+
 
         Owner owner1 = new Owner();
 //        owner1.setId(1L);
@@ -54,6 +58,15 @@ public class DataLoader implements CommandLineRunner {
         owner2.setTelephone("Phone-number-of-owner-" + owner2.getFirstName());
         ownerService.save(owner2);
 
+        Owner owner3 = new Owner();
+//        owner2.setId(2L);
+        owner3.setFirstName("John");
+        owner3.setLastName("Wilson");
+        owner3.setAddress("Address-of-owner-" + owner3.getFirstName());
+        owner3.setCity("City-of-owner-" + owner3.getFirstName());
+        owner3.setTelephone("Phone-number-of-owner-" + owner3.getFirstName());
+        ownerService.save(owner3);
+
         System.out.println("Loaded owners...");
 
         Vet vet1 = new Vet();
@@ -68,6 +81,21 @@ public class DataLoader implements CommandLineRunner {
         vet2.setLastName("Porter");
         vetService.save(vet2);
         System.out.println("Loaded vets...");
+
+        Visit visit1 = Visit.builder()
+                .date(LocalDate.now())
+                .description("Nothing").build();
+
+        Pet pet1 = Pet.builder()
+                .name("Cat")
+                .petType(cat)
+                .owner(owner1)
+                .visits(new HashSet<>())
+                .birthDate(LocalDate.now()).build();
+        pet1.getVisits().add(visit1);
+        visit1.setPet(pet1);
+        owner1.getPets().add(pet1);
+        System.out.println("Loaded pet...");
 
 
     }
