@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 
 @Component
@@ -91,7 +92,7 @@ public class DataLoader implements CommandLineRunner {
                 .petType(cat)
                 .owner(owner1)
                 .visits(new HashSet<>())
-                .birthDate(LocalDate.now()).build();
+                .birthDate(LocalDate.parse(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))).build();
         pet1.getVisits().add(visit1);
         visit1.setPet(pet1);
         owner1.getPets().add(pet1);
